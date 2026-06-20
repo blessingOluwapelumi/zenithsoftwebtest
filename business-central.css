@@ -1789,7 +1789,7 @@ body {
     justify-content: center;
     text-align: center;
     /* Reference background picture initialization */
-    background: url('BC/BC2.jpg') no-repeat center center;
+    background: url('/BC/BC2.jpg') no-repeat center center;
     background-size: cover;
     overflow: hidden;
     box-sizing: border-box;
