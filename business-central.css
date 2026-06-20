@@ -507,7 +507,7 @@ body {
     /* Stacked background layout: Purple to Blue gradient overlay on top of the vector lines */
     background: 
         linear-gradient(to right, rgb(40, 10, 66) 30%, rgb(27, 93, 158) 100%),
-        url('/BC/Vector.png'); 
+        url('BC/Vector.png'); 
     background-size: cover, cover;
     background-position: center, right center;
     background-repeat: no-repeat;
@@ -1789,7 +1789,7 @@ body {
     justify-content: center;
     text-align: center;
     /* Reference background picture initialization */
-    background: url('/BC/BC2.jpg') no-repeat center center;
+    background: url('BC/BC2.jpg') no-repeat center center;
     background-size: cover;
     overflow: hidden;
     box-sizing: border-box;
