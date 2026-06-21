@@ -1771,14 +1771,7 @@ font-size: 1.2rem;
    ========================================================== */
 
 
-.software-showcase {
-    /* text-align: center; */
-    padding: 5rem 0;
-    background: radial-gradient(circle at top, #fffdfe 0%, #e5effd 100%);
-    width: 100%;
-    box-sizing: border-box;
-   
-}
+
 
 
 .showcase-container {
