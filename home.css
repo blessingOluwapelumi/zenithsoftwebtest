@@ -2231,7 +2231,7 @@ font-size: 1.2rem;
   font-size: 30px;
   font-weight: 700;
   padding-left: 70px;
-  color: var(--primary-color);
+color: var(--main-bg-color);
 }
 
 .partners-right {
