@@ -6,9 +6,9 @@
     font-family: "Segoe UI", "Montserrat";
 }
 
-body {
+/* body {
     background-color: #f4f6f9;
-}
+} */
 
 :root {
     --primary-color: #393939;
@@ -514,20 +514,21 @@ body {
 }
 
 .hero-content h1 {
-    font-size: 4.2rem;
+    font-size:60px;
     font-weight: bold;
     margin-bottom: 10px;
     transition: opacity 0.5s ease;
 }
 
 .hero-content p {
-    font-size: 16px;
-    transition: opacity 0.5s ease;
+  font-size: 16px;
+    max-width: 600px;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    color: #f1f5f9;
+    transition: opacity 0.4s ease;
+    
 }
-
-
-
-
 
 
 
@@ -537,7 +538,7 @@ body {
    ========================================================== */
 .hero-section {
     position: relative;
-    height: 800px;
+    height: 750px;
     width: 100%;
     overflow: hidden;
     display: flex;
@@ -552,7 +553,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, rgba(45, 15, 71, 0.377) 30%, rgba(40, 106, 172, 0.329) 100%);
+    background: linear-gradient(90deg, rgba(45, 15, 71, 0.671) 30%, rgba(40, 106, 172, 0.329) 100%);
     z-index: 2;
     pointer-events: none;
 }
@@ -584,23 +585,6 @@ body {
     color: #ffffff;
 }
 
-.hero-title {
-    font-size: 7rem;
-    width: 50%;
-    font-weight: 700;
-    margin-bottom: 16px;
-    opacity: 1;
-    transition: opacity 0.4s ease;
-}
-
-.hero-subtitle {
-    font-size: 1.5rem;
-    max-width: 600px;
-    margin-bottom: 30px;
-    line-height: 1.6;
-    color: #f1f5f9;
-    transition: opacity 0.4s ease;
-}
 
 .hero-btn {
     display: inline-block;
@@ -653,11 +637,11 @@ body {
    ---------------------------------------------------------- */
 
    @media (max-width: 768px) {
-    .hero-content h1 {
-        font-size: 2.8rem;
+   .hero-content h1 {
+        font-size: 22px;
     }
 
-    .hero-content p {
+   .hero-content p {
         font-size:14px;
     }
 
@@ -668,8 +652,8 @@ body {
 
 @media (max-width: 768px) and (max-width: 1024px) {
     /* Hero Responsiveness */
-    .hero-title { font-size: 4rem; width: 100%;}
-    .hero-subtitle { font-size: 1.3rem; }
+    .hero-content h1{ font-size: 22px; width: 100%;}
+  .hero-content p { font-size: 14px; }
     
     .hero-btn {
         padding: 10px 22px;
@@ -684,20 +668,14 @@ body {
 
     .hero-section {
    
-    height: 450px;
+    height: 500px;
    
     }
 
     .hero-section::after {
     background: linear-gradient(90deg, rgba(42, 10, 70, 0.712) 30%, rgba(12, 66, 121, 0.904) 100%);
 }
- .hero-content h1 {
-        font-size: 2rem;
-    }
 
- .hero-content p{
-font-size: 14px;
- }
 
   .brand-img {
         max-height: 28px; 
@@ -818,7 +796,7 @@ font-size: 14px;
    ========================================================================== */
 
 .about-container {
-    margin: 15rem 0;
+    margin: 10rem 0;
     background-color: #f8fafc;
     display: flex;
     justify-content: center;
@@ -2207,7 +2185,7 @@ font-size: 14px;
   padding: 5rem 0px;
   overflow: hidden;
   flex-wrap: wrap;
- margin: 10rem 0;
+ /* margin: 10rem 0; */
 }
 .partners-bg-decor{
  position: absolute;
@@ -2231,7 +2209,7 @@ font-size: 14px;
   font-size: 30px;
   font-weight: 700;
   padding-left: 70px;
-color: var(--main-bg-color);
+  color: var(--main-bg-color);
 }
 
 .partners-right {
@@ -2282,7 +2260,7 @@ color: var(--main-bg-color);
     flex-direction: column;
     align-items: center;
     padding: 40px 15px;
-    margin: 5rem 0;
+    /* margin: 5rem 0; */
   }
 
   .partners-left {
@@ -2317,123 +2295,6 @@ color: var(--main-bg-color);
 
 
 
-/*our customers and partners*/
-.partners-section {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #f9f9f9;
-  padding: 5rem 0px;
-  overflow: hidden;
-  flex-wrap: wrap;
- margin: 10rem 0;
-}
-.partners-bg-decor{
- position: absolute;
-  top: 0;
-  right: 0;
-
-
-
-  pointer-events: none;
-}
-
-.partners-left {
-  flex: 0 0 350px;
-  background: var(--secondary);
-  color: var(--main-bg-color);
-  padding: 40px 0px;
- 
-}
-
-.partners-left h2 {
-  font-size: 3.5rem;
-  font-weight: 600;
-  padding-left: 70px;
-}
-
-.partners-right {
-  flex: 1;
-  overflow: hidden;
-  position: relative;
-}
-
-.logo-track {
-  display: flex;
-  width: max-content;
-  animation: scrollRightLoop 25s linear infinite;
-}
-
-.logo-track img {
- height: 50px;
-  margin: 0 50px;
-  transition: filter 0.3s ease;
-}
-
-/* .Logo11, .Logo10, .Logo9, 
-.Logo7,  .Logo5,
- .Logo4{
-  height: 80px;
-}
-
-.Logo12, .Logo6,.Logo3, .Logo2, .Logo1, .Logo8{
-   height: 40px;
-} */
-
-.logo-track img:hover {
-  filter: grayscale(100%);
-}
-
-/* Reverse scrolling: left to right */
-@keyframes scrollRightLoop {
-  0% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(0%);
-  }
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-  .partners-section {
-    flex-direction: column;
-    align-items: center;
-    padding: 40px 15px;
-    margin: 5rem 0;
-  }
-
-  .partners-left {
-    background: none;
-    color: var(--primary-color);
-    padding: 0;
-    text-align: center;
-    flex:0;
-  }
-
-  .partners-left h2 {
-    font-size:20px;
-    padding: 0;
-    margin-bottom: 50px;
-  }
-
-  .partners-right {
-    width: 100%;
-    overflow: hidden;
-  }
-
-  .logo-track {
-    animation: scrollRightLoop 20s linear infinite;
-    gap: 20px;
-  }
-
-  .logo-track img {
-    height: 35px;
-    margin: 0 20px;
-  }
-}
-
 
 
 
@@ -2461,7 +2322,7 @@ color: var(--main-bg-color);
 /* Header Configured to Max-Width 1400px with Central Alignment Hooks */
 .testimonial-header {
   max-width: 1400px;
-  margin: 0 auto 30px auto;
+  margin: 8rem auto 30px auto;
   padding: 0 40px;
   text-align: center;
   box-sizing: border-box;
@@ -2546,7 +2407,7 @@ color: var(--main-bg-color);
 .testimonial-slider-wrapper {
   position: relative;
   max-width: 1400px;
-  margin: 2rem auto 15rem auto;
+  margin: 2rem auto 5rem auto;
   padding: 0 10px;
   overflow: hidden;
   box-sizing: border-box;
@@ -2676,7 +2537,7 @@ background-color: #ebf4fb9a;
 /* blog section styling */
 
 .blog-section {
-  padding: 0px 20px;
+  padding: 80px 20px;
   background-color: var(--main-bg-color);
   text-align: center;
 }
@@ -2813,7 +2674,7 @@ background-color: #ebf4fb9a;
 .footer-stack-wrapper {
   position: relative;
   width: 100%;
-  margin-top: 180px; /* Generates space above the footer for the floating form card */
+  margin-top: 50px; /* Generates space above the footer for the floating form card */
   background: transparent;
   display: block;
 }
