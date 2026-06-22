@@ -568,6 +568,7 @@ body {
     text-decoration: none;
     box-shadow: 0 10px 25px rgba(255, 22, 22, 0.25);
     transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.2s;
+    scroll-behavior: smooth;
 }
 
 .hero-cta-btn.btn-orange:hover {
@@ -1845,6 +1846,7 @@ body {
     border-radius: 20px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    scroll-behavior: smooth;
 }
 
 .bc-banner-primary-btn:hover {
