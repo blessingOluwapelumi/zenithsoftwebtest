@@ -680,6 +680,10 @@
   .brand-img {
         max-height: 28px; 
     }
+
+    .hero-content{
+      text-align: center;
+    }
 }
 
 
@@ -961,7 +965,7 @@
   .sub-badge {
  font-size: 12px;
   letter-spacing: 0.3px;
-    
+    align-self: center;
 }
 .content-text-card h2 {
     font-size: 25px;
@@ -970,6 +974,17 @@
 .about-description{
   font-size: 14px;
 }
+
+.content-text-card{
+  align-items: center;
+  text-align: center;
+}
+
+.about-cta-btn{
+  align-self: center;
+}
+
+
 
 }
 
@@ -1616,7 +1631,7 @@
   }
 
   .track-header img{
-    max-width: 120px;
+   opacity: 0;
   }
 
   .counter-box h1{
@@ -2291,6 +2306,10 @@
     height: 35px;
     margin: 0 20px;
   }
+
+  .partners-left h2{
+    color: var(--primary-color);
+  }
 }
 
 
@@ -2494,6 +2513,14 @@ background-color: #ebf4fb9a;
     height: 36px;
     
   }
+
+  .testimonial-slide{
+    text-align: center;
+  }
+
+  .reviewer-details{
+    display: block;
+  }
 }
 
 @media (max-width: 992px) {
@@ -2509,9 +2536,9 @@ background-color: #ebf4fb9a;
 }
 
 @media (max-width: 768px) {
-  .testimonial-section {
-    padding: 40px 0;
-  }
+  /* .testimonial-section {
+    padding: 20px 0;
+  } */
   .testimonial-header {
     padding: 0 24px;
   }
@@ -2537,7 +2564,7 @@ background-color: #ebf4fb9a;
 /* blog section styling */
 
 .blog-section {
-  padding: 80px 20px;
+  padding: 40px 20px;
   background-color: var(--main-bg-color);
   text-align: center;
 }
@@ -3165,6 +3192,11 @@ footer.footer-container {
   }
   .form-info-side h2 {
     font-size: 20px;
+    
+  }
+
+.form-info-side{
+    text-align: center;
   }
 
   .form-info-side p{
@@ -3189,6 +3221,11 @@ footer.footer-container {
     justify-content: flex-start;
     flex-wrap: wrap;
     gap: 20px;
+  }
+
+  .form-submit-btn{
+    font-size: 14px;
+    padding: 10px;
   }
 }
 
