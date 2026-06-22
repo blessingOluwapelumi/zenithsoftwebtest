@@ -12,17 +12,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const heroData = [
         {
-            image: '/new_asset/contact1.jpg',
+            image: 'new_asset/contact1.jpg',
             heading: 'Contact Us',
             subText: 'We’re always here to listen and to provide 24/7 support',
         },
         {
-            image:  '/new_asset/CONTACT 2.jpg',
+            image:  'new_asset/CONTACT 2.jpg',
             heading: 'Let’s Work Together',
             subText: 'Tell us about your project goals',
         },
         {
-            image:   '/new_asset/company.jpg',
+            image:   'new_asset/company.jpg',
             heading: 'Get In Touch Today',
             subText: 'Solutions tailored for your business',
         }
