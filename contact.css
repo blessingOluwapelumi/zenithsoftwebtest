@@ -492,7 +492,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     transition: background-image 1s ease-in-out;
-    background-image: url('assets/img/CONTACT\ 2.jpg');
+    background-image: url('/assets/img/CONTACT\ 2.jpg');
 }
 
 .hero-slider::before {
@@ -554,7 +554,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   transition: background-image 1s ease-in-out;
-  background-image: url('/new_asset/contact1.jpg');
+  background-image: url('new_asset/contact1.jpg');
 }
 
 .hero-slider::before {
