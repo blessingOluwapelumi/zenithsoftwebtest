@@ -173,7 +173,7 @@ body {
 
 .dropdown-pane {
     position: absolute;
-    top: 70px; 
+    top: 110px; 
     background-color: #f1f5f9;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     opacity: 0;
