@@ -1884,16 +1884,14 @@
         font-size: 14px;
     }
     .app-card h3{
-      font-size: 1.2rem;
+      font-size: 14px;
     }
 
     .app-card img{
       width: 30px;
     }
     
-    .card-description{
-      font-size: 1.2rem;
-    }
+
 
     .software-showcase{
       padding:4rem 0;
