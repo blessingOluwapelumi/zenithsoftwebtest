@@ -61,6 +61,7 @@
 
 
 
+
 /* ==========================================================================
    2. MAIN HEADER NAVIGATION WITH IMAGE LOGO FIXES
    ========================================================================== */
@@ -125,7 +126,6 @@
     align-items: center;
     height: 70px;
     transition: color 0.2s ease;
-    scroll-behavior: smooth;
 }
 
 .nav-item:hover, .dropdown-trigger:hover {
@@ -167,11 +167,11 @@
 /* ==========================================================================
    DROPDOWN & MEGA MENU STRUCTURES
    ========================================================================== */
-.nav-item-dropdown { position: relative; scroll-behavior: smooth;}
+.nav-item-dropdown { position: relative; }
 
 .dropdown-pane {
     position: absolute;
-    top: 110px; 
+    top: 70px; 
     background-color: #f1f5f9;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     opacity: 0;
@@ -302,6 +302,13 @@
    3. MOBILE RESPONSIVE MEDIA QUERIES (Viewport width <= 1024px)
    ========================================================================== */
 @media screen and (max-width: 1024px) {
+
+.brand-img {
+    max-height: 32px; 
+   
+}
+
+
     .top-bar {
         display: none;
     }
@@ -370,7 +377,6 @@
         justify-content: space-between;
         font-size: 16px;
         box-sizing: border-box;
-        scroll-behavior: smooth;
     }
 
     .nav-item-dropdown {
