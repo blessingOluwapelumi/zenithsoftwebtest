@@ -1648,7 +1648,7 @@ body {
 }
 
 .bcc-pricing-title {
-    font-size: 2.6rem;
+    font-size: 30px;
     font-weight: 700;
     color: var(--bc-titile); /* Deep corporate plum/slate */
     margin: 0 0 14px 0;
@@ -1656,7 +1656,7 @@ body {
 }
 
 .bcc-pricing-subtitle {
-    font-size: 1.3rem;
+    font-size: 16px;
     color: var(--bc-bodyText);
     margin: 0;
 }
@@ -1693,14 +1693,30 @@ body {
         margin: 0 auto;
         width: 100%;
     }
+
 }
 
 @media (min-width: 992px) {
     .bcc-pricing-grid {
         grid-template-columns: repeat(3, 1fr);
     }
+
 }
 
+@media (max-width:1024px){
+    
+    .bcc-pricing-title{
+        font-size: 20px;
+    }
+
+    .bcc-pricing-subtitle{
+        font-size: 14px;
+    }
+
+    .bcc-card-header h3{
+        font-size: 14px;
+    }
+}
 /* --- Card Frame Modules --- */
 .bcc-pricing-card {
     background-color: #f3f7fd; 
@@ -1738,8 +1754,7 @@ body {
 }
 
 .bcc-card-header h3 {
-    font-size: 1.25rem;
-    line-weight: 1.4;
+    font-size: 16px;
     font-weight: 700;
     margin: 0;
     letter-spacing: 0.01em;
@@ -1772,7 +1787,7 @@ body {
 }
 
 .bcc-amount {
-    font-size: 4.8rem;
+    font-size: 3.8rem;
     font-weight: 700;
    color: var(--bc-titile);
     line-height: 0.9;
@@ -1857,7 +1872,7 @@ body {
 }
 
 .bc-banner-main-title {
-    font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+    font-size: clamp(20px, 3.2vw, 30px);
     color: #ffffff;
     font-weight: 700;
     line-height: 1.25;
@@ -1866,7 +1881,7 @@ body {
 }
 
 .bc-banner-body-text {
-    font-size: clamp(1rem, 1.2vw, 1.4rem);
+    font-size: clamp(14px, 1.2vw, 16px);
     color: rgba(255, 255, 255, 0.92);
     line-height: 1.5;
     margin-bottom: 38px;
@@ -1882,7 +1897,7 @@ body {
     color: #ffffff;
     text-decoration: none;
     padding: 12px 34px;
-    font-size: 1.3rem;
+    font-size: 14px;
     font-weight: 600;
     border-radius: 20px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
@@ -1925,6 +1940,12 @@ body {
     transform: translateY(0);
 }
 
+@media (max-width:1024px){
+    .bc-banner-primary-btn{
+        padding: 10px 22px;
+        font-size: 12px;
+    }
+}
 
 /* METHODOLOGY */
 
@@ -1969,7 +1990,7 @@ body {
 }
 
 .bcm-section-title {
-      font-size: 2.5rem;
+      font-size: 30px;
         color: var(--bc-titile);
     font-weight: 700;
    
@@ -1978,7 +1999,7 @@ body {
 }
 
 .bcm-section-subtitle {
-    font-size: 1.5rem;
+    font-size: 16px;
     line-height: 1.6;
     color: #475569;
     margin: 0;
@@ -2060,7 +2081,7 @@ body {
 }
 
 .bcm-card-title {
-    font-size: 1.25rem;
+    font-size: 16px;
     font-weight: 600;
     color: var(--bc-titile);
     margin: 0 0 12px 0;
@@ -2080,6 +2101,7 @@ body {
         padding: 36px 28px;
     }
 
+ 
     
 }
 
@@ -2095,22 +2117,30 @@ body {
     .bcm-card {
         flex: 0 0 33.333%; /* Shows 3 structural columns simultaneously on desktop */
     }
+
     
 }
 
 @media (max-width:1024px){
     .bcm-section-title{
-    font-size: 2rem;
+    font-size: 20px;
 }
 
 .bcm-section-subtitle{
-    font-size: 1.2rem;
+    font-size: 14px;
 }
 
 .bcm-card-text{
-    font-size: 1.1rem;
+    font-size: 14px;
 }
+
+.bcm-card-title{
+    font-size: 14px;
 }
+
+
+}
+
 /* --- Structural Navigation Controls --- */
 .bcm-nav-btn {
     position: static; /* Flows cleanly down into secondary layout blocks below 992px */
@@ -2176,10 +2206,10 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 14px 36px;
+    padding: 10px 28px;
     background-color: var(--btn-color);
     color: #ffffff;
-    font-size: 1.3rem;
+    font-size: 12px;
     font-weight: 600;
     text-decoration: none;
     border-radius: 30px;
@@ -2354,7 +2384,7 @@ body {
 
 /* --- Typography System --- */
 .bcc-headline {
-    font-size: 1.4rem;
+    font-size: 16px;
     font-weight: 700;
     line-height: 1.3;
     color: var(--bc-titile);
@@ -2363,26 +2393,13 @@ body {
 }
 
 .bcc-summary {
-    font-size: 1.3rem;
+    font-size: 14px;
     line-height: 1.5;
     color: var(--bc-bodyText);
     margin: 0 0 24px 0;
 }
 
-@media (min-width: 992px) {
-    .bcc-headline {
-        font-size: 1.8rem;
-        margin: 0 0 20px 0;
-    }
-    
-}
 
-@media (min-width: 1200px) {
-    .bcc-headline {
-        font-size: 2.2rem;
-    }
-    
-}
 
 /* --- Right Side Split Imagery Block --- */
 .bcc-visual-side {
@@ -2535,7 +2552,7 @@ body {
     }
 
     .bcc-headline {
-        font-size: 1.5rem;
+        font-size: 15px;
     }
 
     .bcc-ctrl-btn {
@@ -2545,10 +2562,6 @@ body {
         margin-bottom: 2rem;
     }
 
-    .bcc-summary {
-        font-size: 1.2rem;
-       
-    }
 
    
 }
@@ -2589,7 +2602,7 @@ body {
 }
 
 .blog-header h1 {
-  font-size: 2.6rem;
+  font-size: 30px;
   font-weight: 700;
   color: var(--bc-titile);
   line-height: 1.4;
@@ -2811,15 +2824,15 @@ text-decoration: none;
   .blog-card {
     flex: 0 0 calc((100% - 30px) / 2); /* Renders 2 cards smoothly across tablet viewports */
   }
-  .blog-header h1 {
-    font-size: 2.5rem;
-  }
+  
 }
 
 @media (min-width: 1024px) {
   .blog-card {
     flex: 0 0 calc((100% - 60px) / 3); /* Locks exactly 3 proportional cards visible on desktop screens */
   }
+
+ 
 }
 
 @media (max-width: 640px) {
@@ -2842,26 +2855,15 @@ text-decoration: none;
   }
 
   .blog-header h1{
-    font-size: 2rem;
+    font-size:20px;
   }
+
+   .blog-header h4{
+    font-size: 12px;
+  }
+
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2878,7 +2880,7 @@ text-decoration: none;
 .footer-stack-wrapper {
   position: relative;
   width: 100%;
-  margin-top: 180px; /* Generates space above the footer for the floating form card */
+  margin-top: 10px; /* Generates space above the footer for the floating form card */
   background: transparent;
   display: block;
 }
@@ -2975,7 +2977,7 @@ text-decoration: none;
 }
 
 .form-info-side h2 {
-  font-size: 3rem;
+  font-size: 30px;
   font-weight: bold;
   color: var(--primary-color);
   line-height: 1.2;
@@ -2983,7 +2985,7 @@ text-decoration: none;
 }
 
 .form-info-side p {
-  font-size: 1.5rem;
+  font-size: 16px;
   line-height: 1.6;
   color: var(--body-muted);
   margin: 0;
@@ -3012,7 +3014,7 @@ text-decoration: none;
   border: 1px solid #e2e8f0;
   border-radius: 6px;
   padding: 14px 18px;
-  font-size: 1.2rem;
+  font-size: 12px;
   color: var(--body-muted);
   outline: none;
   box-sizing: border-box;
@@ -3325,6 +3327,8 @@ footer.footer-container {
   .form-grid-layout {
     gap: 30px;
   }
+
+ 
 }
 
 @media (max-width: 991px) {
@@ -3336,7 +3340,7 @@ footer.footer-container {
     width: 100%;
   }
   .form-info-side h2 {
-    font-size: 2rem;
+    font-size: 20px;
   }
   .footer-columns {
     flex-wrap: wrap;
@@ -3393,7 +3397,7 @@ footer.footer-container {
   }
 
   .form-info-side p{
-    font-size: 1.3rem;
+    font-size: 14px;
   }
 
 }
