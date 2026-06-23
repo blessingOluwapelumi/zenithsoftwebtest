@@ -507,7 +507,7 @@ body {
     /* Stacked background layout: Purple to Blue gradient overlay on top of the vector lines */
     background: 
         linear-gradient(to right, rgb(40, 10, 66) 30%, rgb(27, 93, 158) 100%),
-        url('BC/Vector.png'); 
+        url('/BC/Vector.png'); 
     background-size: cover, cover;
     background-position: center, right center;
     background-repeat: no-repeat;
@@ -533,16 +533,17 @@ body {
 }
 
 .bc-hero-title {
-    font-size: clamp(2.5rem, 4vw, 4.2rem);
+    font-size: clamp(20px, 4vw, 30px);
     font-weight: 700;
     color: #ffffff;
     line-height: 1.15;
     margin-bottom: 20px;
     letter-spacing: -1px;
+    margin-top: 30px;
 }
 
 .bc-hero-subtitle {
-    font-size: clamp(1.05rem, 1.3vw, 1.35rem);
+    font-size: clamp(14px, 1.3vw, 16px);
     color: rgba(255, 255, 255, 0.88);
     line-height: 1.6;
     margin-bottom: 32px; /* Controls spacing directly above the button elements */
@@ -568,7 +569,6 @@ body {
     text-decoration: none;
     box-shadow: 0 10px 25px rgba(255, 22, 22, 0.25);
     transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.2s;
-    scroll-behavior: smooth;
 }
 
 .hero-cta-btn.btn-orange:hover {
@@ -652,7 +652,7 @@ body {
    ========================================================================== */
 @media (max-width: 991px) {
     .bc-hero {
-        padding-top: 130px; 
+        /* padding-top: 130px;  */
         padding-bottom: 60px;
         min-height: auto;
     }
@@ -677,13 +677,22 @@ body {
     }
 
     .bc-hero-subtitle {
-        margin-bottom: 28px; /* Slightly reduces spacing gap on mobile screen resolutions */
+        margin-bottom: 38px; /* Slightly reduces spacing gap on mobile screen resolutions */
     }
 
     .bc-hero-actions {
         justify-content: center;
         width: 100%;
         gap: 20px;
+    }
+
+    .cta-btn{
+        padding: 10px 22px;
+        font-size: 12px;
+    }
+
+    .hero-link-btn{
+        font-size: 12px;
     }
 }
 
@@ -794,7 +803,7 @@ body {
 
 /* --- Right Column: Typography & Text Layout --- */
 .overview-main-title {
-    font-size: clamp(1.85rem, 2.8vw, 2.6rem);
+    font-size: clamp(20px, 2.8vw, 30px);
     color: #2c3e50;
     font-weight: 700;
     line-height: 1.25;
@@ -803,7 +812,7 @@ body {
 }
 
 .overview-body-paragraph {
-    font-size: clamp(1rem, 1.1vw, 1.3rem);
+    font-size: clamp(14px, 1.1vw, 20px);
     color: #5d6d7e;
     line-height: 1.65;
     margin-bottom: 20px;
@@ -811,7 +820,7 @@ body {
 }
 
 .overview-sub-title {
-    font-size: clamp(1.2rem, 1.4vw, 1.5rem);
+    font-size: clamp(14px, 1.4vw, 16px);
     color: #2c3e50;
     font-weight: 600;
     margin-top: 24px;
@@ -825,7 +834,7 @@ body {
 }
 
 .overview-feature-list li {
-    font-size: clamp(1rem, 1.1vw, 1.3rem);
+    font-size: clamp(14px, 1.1vw, 16px);
     color: #5d6d7e;
     line-height: 1.6;
     margin-bottom: 5px;
@@ -947,7 +956,7 @@ body {
 }
 
 .bcz-section-title {
-    font-size: 2.2rem;
+    font-size: 20px;
     font-weight: 700;
     color: var(--bc-titile, #0f172a);
     margin-top: 0;
@@ -993,7 +1002,7 @@ body {
     border: 1px solid #e2e8f0;
     padding: 10px 20px;
     border-radius: 30px;
-    font-size: 1.05rem;
+    font-size: 14px;
     font-weight: 500;
     color: var(--bc-titile, #0f172a);
     cursor: pointer;
@@ -1046,6 +1055,10 @@ body {
     }
     .bcz-arrow-left { left: -55px; }
     .bcz-arrow-right { right: -55px; }
+
+    .bcz-tab-pill{
+        font-size: 12px;
+    }
 }
 
 .bcz-nav-arrow.bcz-is-hidden {
@@ -1077,7 +1090,7 @@ body {
         grid-template-columns: 5.5fr 6.5fr;
     }
     .bcz-section-title {
-        font-size: 2.6rem;
+        font-size: 20px;
     }
 }
 
@@ -1103,7 +1116,7 @@ body {
     justify-content: space-between;
     align-items: center;
     text-align: left;
-    font-size: 1.2rem;
+    font-size: 14px;
     font-weight: 600;
     color: var(--bc-titile, #1e293b);
     cursor: pointer;
@@ -1124,7 +1137,7 @@ body {
 }
 
 .bcz-accordion-content p {
-    font-size: 1.05rem;
+    font-size: 14px;
     line-height: 1.6;
     color: var(--bc-bodyText, #475569);
     margin: 0;
@@ -1143,6 +1156,11 @@ body {
     .bcz-accordion-item.bcz-active .bcz-accordion-content {
         max-height: 200px; 
     }
+
+    .bcz-accordion-content p{
+        font-size: 12px;
+    }
+   
 }
 
 /* --- Right Sticky Display Panel Window --- */
@@ -1242,7 +1260,7 @@ body {
 }
 
 .bcc-section-title {
-    font-size: 2.6rem;
+    font-size: 30px;
     font-weight: 700;
     color: #ffffff;
     margin: 0 0 16px 0;
@@ -1250,7 +1268,7 @@ body {
 }
 
 .bcc-section-subtitle {
-    font-size: 1.5rem;
+    font-size: 15px;
     line-height: 1.6;
     color: #b4bbc3;
     margin: 0;
@@ -1347,6 +1365,23 @@ body {
         height: 100px; 
         visibility: visible;
     }
+
+  
+}
+
+
+@media (max-width:1024px){
+   .bcc-section-title{
+        font-size: 20px;
+    }
+
+    .bcc-header-block{
+        text-align: left;
+    }
+
+    .bcc-section-subtitle{
+        font-size: 14px;
+    }
 }
 
 /* --- Rigid Structure Accordion Configuration System --- */
@@ -1366,7 +1401,7 @@ body {
     justify-content: space-between;
     align-items: center;
     text-align: left;
-    font-size: 1.5rem;
+    font-size: 16px;
     font-weight: 400;
     color: #ffffff;
     cursor: pointer;
@@ -1471,6 +1506,12 @@ body {
     .bc-analytics-container {
         grid-template-columns: 6fr 6fr;
         align-items: stretch; /* Forces equal height columns on desktop */
+    }
+}
+
+@media (max-width: 1024px){
+    .bcc-accordion-content p{
+        font-size: 14px;
     }
 }
 
@@ -1846,7 +1887,6 @@ body {
     border-radius: 20px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    scroll-behavior: smooth;
 }
 
 .bc-banner-primary-btn:hover {
