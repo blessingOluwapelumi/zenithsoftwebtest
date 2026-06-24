@@ -1,5 +1,5 @@
 // ==========================================================
-// ZENITHSOFT CAREERS PAGE FUNCTIONAL ENGINE
+// ZENITHSOFT CAREERS & RESOURCES FUNCTIONAL ENGINE
 // ==========================================================
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -54,150 +54,176 @@ document.addEventListener("DOMContentLoaded", () => {
         animatedElements.forEach(el => el.classList.add('reveal-active'));
     }
 
-   
-// BLOGS
-document.addEventListener("DOMContentLoaded", function () {
-  const track = document.getElementById("blogSliderTrack");
-  const viewport = document.getElementById("blogSliderViewport");
-  const prevBtn = document.getElementById("blogPrevBtn");
-  const nextBtn = document.getElementById("blogNextBtn");
-  const dotsContainer = document.getElementById("blogDots");
-  const filterButtons = document.querySelectorAll(".filter-pill");
-  const section = document.querySelector(".blog-section");
 
-  if (!track || !viewport || !prevBtn || !nextBtn) return;
+    // ==========================================
+    // 3. BLOG CARD STAGGERED REVEAL & SLIDER ENGINE
+    // ==========================================
+    const blogCards = document.querySelectorAll(".blog-card");
+    const track = document.getElementById("blogSliderTrack");
+    const prevBtn = document.getElementById("blogPrevBtn");
+    const nextBtn = document.getElementById("blogNextBtn");
+    const dotsContainer = document.getElementById("blogDots");
 
-  let currentIndex = 0;
-  let currentFilter = "d365"; // Default baseline view filter
+    let currentIndex = 0;
+    let cardsPerView = 3;
 
-  // ==========================================
-  // 1. SCROLL REVEAL MONITOR ENGINE
-  // ==========================================
-  if (section) {
-    const sectionObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("blog-revealed");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    sectionObserver.observe(section);
-  }
+    // A. Handle Staggered Scroll Entrance Fade-In Behavior
+    if ('IntersectionObserver' in window) {
+        const blogObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // Match visual sequence based on their current DOM index
+                    const cardArray = Array.from(blogCards);
+                    const index = cardArray.indexOf(entry.target);
+                    setTimeout(() => {
+                        entry.target.classList.add("show");
+                    }, (index % cardsPerView) * 150);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.02 });
 
-  // ==========================================
-  // 2. SLIDER UTILITY GRID CALCULATOR
-  // ==========================================
-  function getVisibleCardsCount() {
-    if (window.innerWidth >= 1024) return 3;
-    if (window.innerWidth >= 768) return 2;
-    return 1;
-  }
-
-  function getActiveCards() {
-    const allCards = Array.from(track.children);
-    return allCards.filter(card => {
-      if (currentFilter === "all") return true;
-      return card.getAttribute("data-category") === currentFilter;
-    });
-  }
-
-  function setupPaginationDots(maxIndex) {
-    dotsContainer.innerHTML = "";
-    if (maxIndex <= 0) return; // Hide dots container completely if cards fit perfectly
-
-    for (let i = 0; i <= maxIndex; i++) {
-      const dot = document.createElement("div");
-      dot.classList.add("blog-dot");
-      if (i === currentIndex) dot.classList.add("active");
-      dotsContainer.appendChild(dot);
-    }
-  }
-
-  function updateSlider() {
-    const activeCards = getActiveCards();
-    const allCards = Array.from(track.children);
-
-    // Apply visibility filter states cleanly
-    allCards.forEach(card => {
-      if (currentFilter === "all" || card.getAttribute("data-category") === currentFilter) {
-        card.classList.remove("filtered-out");
-      } else {
-        card.classList.add("filtered-out");
-      }
-    });
-
-    const visibleCount = getVisibleCardsCount();
-    const maxIndex = Math.max(0, activeCards.length - visibleCount);
-
-    if (currentIndex > maxIndex) currentIndex = maxIndex;
-    if (currentIndex < 0) currentIndex = 0;
-
-    // Execute transform movement mathematics
-    if (activeCards.length > 0) {
-      const cardWidth = activeCards[0].getBoundingClientRect().width;
-      const gap = parseFloat(window.getComputedStyle(track).gap) || 0;
-      const amountToMove = (cardWidth + gap) * currentIndex;
-      track.style.transform = `translateX(-${amountToMove}px)`;
+        blogCards.forEach(card => blogObserver.observe(card));
     } else {
-      track.style.transform = `translateX(0px)`;
+        blogCards.forEach(card => card.classList.add("show"));
     }
 
-    // Set accessibility states on control triggers
-    prevBtn.disabled = currentIndex === 0;
-    nextBtn.disabled = currentIndex >= maxIndex;
-
-    setupPaginationDots(maxIndex);
-  }
-
-  // ==========================================
-  // 3. ACTION AND NAVIGATION LISTENERS
-  // ==========================================
-  nextBtn.addEventListener("click", function () {
-    const visibleCount = getVisibleCardsCount();
-    const maxIndex = getActiveCards().length - visibleCount;
-    if (currentIndex < maxIndex) {
-      currentIndex++;
-      updateSlider();
+    // B. Carousel Slider Implementation Logic
+    function updateSliderDimensions() {
+        if (window.innerWidth >= 1024) {
+            cardsPerView = 3;
+        } else if (window.innerWidth >= 768) {
+            cardsPerView = 2;
+        } else {
+            cardsPerView = 1;
+        }
+        setupPaginationDots();
+        moveSlider();
     }
-  });
 
-  prevBtn.addEventListener("click", function () {
-    if (currentIndex > 0) {
-      currentIndex--;
-      updateSlider();
+    function setupPaginationDots() {
+        if (!dotsContainer) return;
+        dotsContainer.innerHTML = "";
+        const totalSteps = Math.max(1, blogCards.length - cardsPerView + 1);
+        
+        // Safeguard upper bound index values during display layout switches
+        if (currentIndex >= totalSteps) {
+            currentIndex = totalSteps - 1;
+        }
+
+        for (let i = 0; i < totalSteps; i++) {
+            const dot = document.createElement("div");
+            dot.classList.add("blog-dot");
+            if (i === currentIndex) dot.classList.add("active");
+            
+            dot.addEventListener("click", () => {
+                currentIndex = i;
+                moveSlider();
+            });
+            dotsContainer.appendChild(dot);
+        }
     }
-  });
 
-  // Filter Bar Controller - Splits filter state from global redirect links
-  filterButtons.forEach(button => {
-    button.addEventListener("click", function (e) {
-      const targetFilter = this.getAttribute("data-filter");
+    function moveSlider() {
+        if (!track || blogCards.length === 0) return;
+        
+        const cardStyle = window.getComputedStyle(blogCards[0]);
+        const cardWidth = blogCards[0].getBoundingClientRect().width;
+        const gapValue = parseFloat(window.getComputedStyle(track).gap) || 0;
+        
+        // Compute exact transform shift coordinates factoring dynamic gap rules
+        const amountToMove = currentIndex * (cardWidth + gapValue);
+        track.style.transform = `translateX(-${amountToMove}px)`;
 
-      // Interrupt workflow for "View All Blogs" to cleanly launch external tab
-      if (targetFilter === "all") {
-        e.preventDefault();
-        window.open("/blogs", "_blank"); // Updates window context natively to a secure separate sheet
-        return; 
-      }
+        // Refresh dynamic UI controls components state properties
+        const totalSteps = Math.max(1, blogCards.length - cardsPerView + 1);
+        
+        if (prevBtn) prevBtn.disabled = currentIndex === 0;
+        if (nextBtn) nextBtn.disabled = currentIndex >= totalSteps - 1;
 
-      // Default layout filtration logic for structural categories
-      filterButtons.forEach(btn => btn.classList.remove("active"));
-      this.classList.add("active");
+        const dots = dotsContainer ? dotsContainer.querySelectorAll(".blog-dot") : [];
+        dots.forEach((dot, idx) => {
+            if (idx === currentIndex) {
+                dot.classList.add("active");
+            } else {
+                dot.classList.remove("active");
+            }
+        });
+    }
 
-      currentFilter = targetFilter;
-      currentIndex = 0; 
-      
-      track.style.transform = `translateX(0px)`;
-      updateSlider();
-    });
-  });
+    // Bind Navigation Button Press Intercepts
+    if (nextBtn) {
+        nextBtn.addEventListener("click", () => {
+            const totalSteps = Math.max(1, blogCards.length - cardsPerView + 1);
+            if (currentIndex < totalSteps - 1) {
+                currentIndex++;
+                moveSlider();
+            }
+        });
+    }
 
-  window.addEventListener("resize", updateSlider);
-  
-  // Fire primary build sequence on execution lifecycle loop
-  updateSlider();
-});
+    if (prevBtn) {
+        prevBtn.addEventListener("click", () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                moveSlider();
+            }
+        });
+    }
+
+    // Initialize Layout and bind resize trackers
+    if (track && blogCards.length > 0) {
+        window.addEventListener("resize", updateSliderDimensions);
+        updateSliderDimensions();
+    }
+
+
+    
+    // ==========================================
+    // 4. DYNAMIC APPLICATION FIELD VISIBILITY ENGINE
+    // ==========================================
+    const academyBlock = document.getElementById('academyConditionalBlock');
+    const cohortSelect = document.getElementById('cohortSelect');
+    const programSelect = document.getElementById('programSelect');
+
+    const trainingBlock = document.getElementById('trainingConditionalBlock');
+    const trainingProgramSelect = document.getElementById('trainingProgramSelect');
+    const trainingDateSelect = document.getElementById('trainingDateSelect');
+    const trainingTimeSelect = document.getElementById('trainingTimeSelect');
+
+    function toggleConditionalFields(value) {
+        if (academyBlock) {
+            if (value === 'Academy Training') {
+                academyBlock.style.display = 'block';
+                if (cohortSelect) cohortSelect.required = true;
+                if (programSelect) programSelect.required = true;
+            } else {
+                academyBlock.style.display = 'none';
+                if (cohortSelect) { cohortSelect.required = false; cohortSelect.value = ""; }
+                if (programSelect) { programSelect.required = false; programSelect.value = ""; }
+            }
+        }
+
+        if (trainingBlock) {
+            if (value === 'Free Introductory Training') {
+                trainingBlock.style.display = 'block';
+                if (trainingProgramSelect) trainingProgramSelect.required = true;
+                if (trainingDateSelect) trainingDateSelect.required = true;
+                if (trainingTimeSelect) trainingTimeSelect.required = true;
+            } else {
+                trainingBlock.style.display = 'none';
+                if (trainingProgramSelect) { trainingProgramSelect.required = false; trainingProgramSelect.value = ""; }
+                if (trainingDateSelect) { trainingDateSelect.required = false; trainingDateSelect.value = ""; }
+                if (trainingTimeSelect) { trainingTimeSelect.required = false; trainingTimeSelect.value = ""; }
+            }
+        }
+    }
+
+    if (pathwaySelect) {
+        pathwaySelect.addEventListener('change', function() {
+            toggleConditionalFields(this.value);
+        });
+    }
 
     // ==========================================
     // 5. FOOTER FORM OBSERVER DETECTION
