@@ -457,50 +457,112 @@
 </section>
 
 <!-- BLOGS SND UPDATES SECTION -->
-<section class="blog-section" id="blog">
+<!-- BLOGS & RESOURCES -->
+ <section class="blog-section" id="blog">
   <div class="blog-header">
     <h4>OUR BLOG & NEWS</h4>
-    <h1>Take A Look At Our Articles <br />& Resources</h1>
+    <h1>Dynamics 365 Business Central Insights & Resources</h1>
   </div>
 
-  <div class="blog-grid">
-    <!-- Blog Card 1 -->
-    <div class="blog-card">
-      <div class="blog-image">
-        <img src="new_asset/excel book cover.png" alt="Excel Tips Book" />
-      </div>
-      <div class="blog-content">
-        <span class="tag">New Release</span>
-        <h3>Purchase Self-Paced Microsoft Excel Spreadsheet Tips Workbook.</h3>
-        <a href="#" class="read-arrow" target="_blank">→</a>
-      </div>
+  <div class="blog-controls-bar">
+    <div class="blog-filter-pills">
+      <button class="filter-pill active" data-filter="d365">D365 Business Central</button>
+      <a href="blogs.html" target="_blank" class="filter-pill-link">View All Blogs</a>
     </div>
-
-    <!-- Blog Card 2 -->
-    <div class="blog-card">
-      <div class="blog-image">
-        <img src="new_asset/email banner 2.png" alt="Dynamics NAV Upgrade" />
-      </div>
-      <div class="blog-content">
-        <span class="tag">New Release</span>
-        <h3>Everything You Need To Know About Upgrade Of Dynamics NAV To Business Central.</h3>
-        <a href="#" class="read-arrow" target="_blank">→</a>
-      </div>
+    
+    <div class="blog-slider-nav">
+      <button class="blog-nav-btn" id="blogPrevBtn" aria-label="Previous items">&larr;</button>
+      <div class="blog-dots" id="blogDots"></div>
+      <button class="blog-nav-btn" id="blogNextBtn" aria-label="Next items">&rarr;</button>
     </div>
+  </div>
 
-    <!-- Blog Card 3 -->
-    <div class="blog-card">
-      <div class="blog-image placeholder">
-        <img src="new_asset/NOW OPEN WEB BANNER.png" alt="Dynamics NAV Upgrade" />
+  <div class="blog-slider-viewport" id="blogSliderViewport">
+    <div class="blog-slider-track" id="blogSliderTrack">
+      
+      <div class="blog-card" data-category="d365">
+        <div class="blog-image">
+          <img src="/Blogs/upgrade.png" alt="Dynamics NAV to Business Central Upgrade Roadmap" />
+        </div>
+        <div class="blog-content">
+          <span class="tag">Migration Guide</span>
+           <a href=""><h3>The Definitive Roadmap: Upgrading Legacy Dynamics NAV to Business Central Cloud.</h3></a>
+          <a href="#" class="read-arrow" target="_blank">→</a>
+        </div>
       </div>
-      <div class="blog-content">
-        <span class="tag">Registration Now Open</span>
-        <h3>Microsoft Dynamics 365 Business Central Training - Financial Management and Supply Chain Management Module</h3>
-        <a href="#application-form" class="read-arrow" target="_blank">→</a>
+
+      <div class="blog-card" data-category="d365">
+        <div class="blog-image">
+          <img src="/Blogs/businesscentral2.png" alt="Business Central Technical Training" />
+        </div>
+        <div class="blog-content">
+          <span class="tag">Training</span>
+          <a href=""> <h3>Mastering Core Modules: Financial & Supply Chain Management in Business Central.</h3></a>
+          <a href="https://forms.office.com/r/vmZCFVQr4M" class="read-arrow" target="_blank">→</a>
+        </div>
       </div>
+
+      <div class="blog-card" data-category="d365">
+        <div class="blog-image">
+          <img src="/Blogs/wave.jpg" alt="Microsoft Release Updates" />
+        </div>
+        <div class="blog-content">
+          <span class="tag">Microsoft Updates</span>
+          <h3>Key Takeaways from Microsoft’s Latest Dynamics 365 Business Central Release Wave.</h3>
+          <a href="#" class="read-arrow" target="_blank">→</a>
+        </div>
+      </div>
+
+         <div class="blog-card" data-category="d365">
+        <div class="blog-image">
+          <img src="/Blogs/transform.png" alt="AI and Automated Ledger Systems" />
+        </div>
+        <div class="blog-content">
+          <span class="tag">AI Capabilities</span>
+         <a href="https://www.microsoft.com/en-us/dynamics-365/blog/business-leader/2023/11/30/transform-the-way-work-gets-done-with-microsoft-copilot-in-dynamics-365-business-central/"><h3>Leveraging Microsoft Copilot in Business Central to Automate Bank Reconciliations.</h3></a> 
+          <a href="https://www.microsoft.com/en-us/dynamics-365/blog/business-leader/2023/11/30/transform-the-way-work-gets-done-with-microsoft-copilot-in-dynamics-365-business-central/" class="read-arrow" target="_blank">→</a>
+        </div>
+      </div>
+
+
+      <div class="blog-card" data-category="d365">
+        <div class="blog-image">
+          <img src="/Blogs/integrate BI.png" alt="Power BI Executive Analytics Dashboard" />
+        </div>
+        <div class="blog-content">
+          <span class="tag">Reporting & Analytics</span>
+         <a href=""> <h3>Building Real-Time Executive Dashboards Using Power BI and Business Central Telemetry.</h3></a>
+          <a href="#" class="read-arrow" target="_blank">→</a>
+        </div>
+      </div>
+
+  
+      <div class="blog-card" data-category="d365">
+        <div class="blog-image">
+          <img src="http://googleusercontent.com/image_collection/image_retrieval/16128431784681991435_6" alt="Microsoft Dynamics Excel Spreadsheet Add-in" />
+        </div>
+        <div class="blog-content">
+          <span class="tag">Productivity Tips</span>
+         <a href=""><h3>Deep Dive: Advanced Data Editing in Excel with the Microsoft Dynamics Office Add-in.</h3></a> 
+          <a href="#" class="read-arrow" target="_blank">→</a>
+        </div>
+      </div>
+
+      <div class="blog-card" data-category="d365">
+        <div class="blog-image">
+          <img src="http://googleusercontent.com/image_collection/image_retrieval/16128431784681991435_7" alt="E-Commerce API Integration Middleware" />
+        </div>
+        <div class="blog-content">
+          <span class="tag">System Integration</span>
+       <a href=""><h3>Connecting Third-Party E-Commerce Platforms Safely to the Business Central General Ledger.</h3></a>
+          <a href="#" class="read-arrow" target="_blank">→</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
+
 
 
 <div class="footer-stack-wrapper" id="application-form">
