@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     let currentSlideIndex = 0;
-    const changeIntervalDuration = 10000; // Adjust image swap speed (4000 = 4 seconds)
+    const changeIntervalDuration = 10000; // Adjust image swap speed (10000 = 10 seconds)
 
     if (slides.length > 0 && heroTitle && heroSubtitle) {
         const cycleHeroElements = () => {
