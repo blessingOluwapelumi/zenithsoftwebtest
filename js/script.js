@@ -748,28 +748,150 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // blog
-document.addEventListener("DOMContentLoaded", function () {
-  const cards = document.querySelectorAll(".blog-card");
 
-  const observer = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach((entry, index) => {
+// BLOGS
+document.addEventListener("DOMContentLoaded", function () {
+  const track = document.getElementById("blogSliderTrack");
+  const viewport = document.getElementById("blogSliderViewport");
+  const prevBtn = document.getElementById("blogPrevBtn");
+  const nextBtn = document.getElementById("blogNextBtn");
+  const dotsContainer = document.getElementById("blogDots");
+  const filterButtons = document.querySelectorAll(".filter-pill");
+  const section = document.querySelector(".blog-section");
+
+  if (!track || !viewport || !prevBtn || !nextBtn) return;
+
+  let currentIndex = 0;
+  let currentFilter = "d365"; // Default baseline view filter
+
+  // ==========================================
+  // 1. SCROLL REVEAL MONITOR ENGINE
+  // ==========================================
+  if (section) {
+    const sectionObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.classList.add("show");
-          }, index * 200); // 200ms stagger between cards
-          observer.unobserve(entry.target); // Optional: remove once shown
+          entry.target.classList.add("blog-revealed");
+          observer.unobserve(entry.target);
         }
       });
-    },
-    {
-      threshold: 0.1,
+    }, { threshold: 0.12 });
+    sectionObserver.observe(section);
+  }
+
+  // ==========================================
+  // 2. SLIDER UTILITY GRID CALCULATOR
+  // ==========================================
+  function getVisibleCardsCount() {
+    if (window.innerWidth >= 1024) return 3;
+    if (window.innerWidth >= 768) return 2;
+    return 1;
+  }
+
+  function getActiveCards() {
+    const allCards = Array.from(track.children);
+    return allCards.filter(card => {
+      if (currentFilter === "all") return true;
+      return card.getAttribute("data-category") === currentFilter;
+    });
+  }
+
+  function setupPaginationDots(maxIndex) {
+    dotsContainer.innerHTML = "";
+    if (maxIndex <= 0) return; // Hide dots container completely if cards fit perfectly
+
+    for (let i = 0; i <= maxIndex; i++) {
+      const dot = document.createElement("div");
+      dot.classList.add("blog-dot");
+      if (i === currentIndex) dot.classList.add("active");
+      dotsContainer.appendChild(dot);
     }
-  );
+  }
 
-  cards.forEach(card => observer.observe(card));
+  function updateSlider() {
+    const activeCards = getActiveCards();
+    const allCards = Array.from(track.children);
+
+    // Apply visibility filter states cleanly
+    allCards.forEach(card => {
+      if (currentFilter === "all" || card.getAttribute("data-category") === currentFilter) {
+        card.classList.remove("filtered-out");
+      } else {
+        card.classList.add("filtered-out");
+      }
+    });
+
+    const visibleCount = getVisibleCardsCount();
+    const maxIndex = Math.max(0, activeCards.length - visibleCount);
+
+    if (currentIndex > maxIndex) currentIndex = maxIndex;
+    if (currentIndex < 0) currentIndex = 0;
+
+    // Execute transform movement mathematics
+    if (activeCards.length > 0) {
+      const cardWidth = activeCards[0].getBoundingClientRect().width;
+      const gap = parseFloat(window.getComputedStyle(track).gap) || 0;
+      const amountToMove = (cardWidth + gap) * currentIndex;
+      track.style.transform = `translateX(-${amountToMove}px)`;
+    } else {
+      track.style.transform = `translateX(0px)`;
+    }
+
+    // Set accessibility states on control triggers
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex >= maxIndex;
+
+    setupPaginationDots(maxIndex);
+  }
+
+  // ==========================================
+  // 3. ACTION AND NAVIGATION LISTENERS
+  // ==========================================
+  nextBtn.addEventListener("click", function () {
+    const visibleCount = getVisibleCardsCount();
+    const maxIndex = getActiveCards().length - visibleCount;
+    if (currentIndex < maxIndex) {
+      currentIndex++;
+      updateSlider();
+    }
+  });
+
+  prevBtn.addEventListener("click", function () {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateSlider();
+    }
+  });
+
+  // Filter Bar Controller - Splits filter state from global redirect links
+  filterButtons.forEach(button => {
+    button.addEventListener("click", function (e) {
+      const targetFilter = this.getAttribute("data-filter");
+
+      // Interrupt workflow for "View All Blogs" to cleanly launch external tab
+      if (targetFilter === "all") {
+        e.preventDefault();
+        window.open("/blogs", "_blank"); // Updates window context natively to a secure separate sheet
+        return; 
+      }
+
+      // Default layout filtration logic for structural categories
+      filterButtons.forEach(btn => btn.classList.remove("active"));
+      this.classList.add("active");
+
+      currentFilter = targetFilter;
+      currentIndex = 0; 
+      
+      track.style.transform = `translateX(0px)`;
+      updateSlider();
+    });
+  });
+
+  window.addEventListener("resize", updateSlider);
+  
+  // Fire primary build sequence on execution lifecycle loop
+  updateSlider();
 });
-
 
 
 
