@@ -30,7 +30,9 @@ body {
 }
 
 
-/* 1. TOP UTILITY BAR STYLING */
+/* ==========================================================
+   SECTION 1: TOP UTILITY BAR STYLING
+   ========================================================== */
 .top-bar {
     background-color: #333333;
     color: #cccccc;
@@ -59,6 +61,9 @@ body {
     color: #ffffff;
 }
 
+
+
+
 /* ==========================================================================
    2. MAIN HEADER NAVIGATION WITH IMAGE LOGO FIXES
    ========================================================================== */
@@ -86,6 +91,8 @@ body {
     justify-content: space-between;
     padding: 0 24px;
     height: 70px;
+    /* Added to give mega-menu dropdown context reference */
+    position: relative; 
 }
 
 .logo {
@@ -123,6 +130,7 @@ body {
     align-items: center;
     height: 70px;
     transition: color 0.2s ease;
+    scroll-behavior: smooth;
 }
 
 .nav-item:hover, .dropdown-trigger:hover {
@@ -164,11 +172,17 @@ body {
 /* ==========================================================================
    DROPDOWN & MEGA MENU STRUCTURES
    ========================================================================== */
-.nav-item-dropdown { position: relative; }
+@media screen and (min-width: 1025px) {
+    /* Stop using the list-item as the coordinate relative wrapper on desktop */
+    .nav-item-dropdown { position: static; }
+}
 
 .dropdown-pane {
     position: absolute;
-    top: 110px; 
+    /* Top calculation changes to 100% of the navbar parent framework height */
+    top: 100%; 
+    left: 0;
+    width: 100%;
     background-color: #f1f5f9;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     opacity: 0;
@@ -185,10 +199,10 @@ body {
 }
 
 .mega-menu {
-    position: fixed; 
+    position: absolute; /* Swapped from fixed to keep layout bounding container relative */
     left: 50%;
     transform: translateX(-50%) translateY(2px);
-    width: 90vw;
+    width: 95vw;
     max-width: 1300px;
     border-radius: 0 0 16px 16px;
     padding: 40px;
@@ -280,12 +294,20 @@ body {
 /* ==========================================================
    ACADEMY & ABOUT SMALL DROPDOWNS
    ========================================================== */
-.relative-container { position: relative; }
+.relative-container { 
+    /* Maintains isolation target strictly for smaller menus */
+    position: relative; 
+}
+
+/* Specific adjustment context rule for smaller standalone drop panels */
+.nav-item-dropdown.relative-container {
+    position: relative;
+}
 
 .small-menu { 
     position: absolute;
     right: 0; 
-    top: 70px;
+    top: 100%; /* Sits cleanly underneath nav line height limits */
     width: 220px; 
     border-radius: 12px; 
     padding: 16px; 
@@ -309,6 +331,7 @@ body {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        position: static;
     }
 
     .nav-actions {
@@ -367,10 +390,12 @@ body {
         justify-content: space-between;
         font-size: 16px;
         box-sizing: border-box;
+        scroll-behavior: smooth;
     }
 
     .nav-item-dropdown {
-        width: 100%;
+        width: 100% !important;
+        position: relative !important;
     }
 
     .dropdown-pane, 
@@ -423,15 +448,14 @@ body {
         border-bottom: 1px dashed #e2e8f0;
     }
 
-    /* --- MOBILE ICON SIZING REDUCTIONS --- */
     .column-icon-img {
-        width: 18px; /* Reduced from 24px */
-        height: 18px; /* Reduced from 24px */
+        width: 18px; 
+        height: 18px; 
     }
 
     .column-title span i {
-        font-size: 14px; /* Reduced from 16px */
-        width: 16px;  /* Reduced from 20px */
+        font-size: 14px; 
+        width: 16px;  
     }
 
     .mobile-column-arrow {
@@ -472,8 +496,6 @@ body {
         box-sizing: border-box;
     }
 }
-
-
 
 /* ==========================================================================
    HERO SECTION STYLING
