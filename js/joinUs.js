@@ -54,73 +54,150 @@ document.addEventListener("DOMContentLoaded", () => {
         animatedElements.forEach(el => el.classList.add('reveal-active'));
     }
 
-    // ==========================================
-    // 3. BLOG CARD STAGGERED REVEAL SEQUENCE
-    // ==========================================
-    const blogCards = document.querySelectorAll(".blog-card");
+   
+// BLOGS
+document.addEventListener("DOMContentLoaded", function () {
+  const track = document.getElementById("blogSliderTrack");
+  const viewport = document.getElementById("blogSliderViewport");
+  const prevBtn = document.getElementById("blogPrevBtn");
+  const nextBtn = document.getElementById("blogNextBtn");
+  const dotsContainer = document.getElementById("blogDots");
+  const filterButtons = document.querySelectorAll(".filter-pill");
+  const section = document.querySelector(".blog-section");
 
-    if ('IntersectionObserver' in window) {
-        const blogObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.classList.add("show");
-                    }, index * 200);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
+  if (!track || !viewport || !prevBtn || !nextBtn) return;
 
-        blogCards.forEach(card => blogObserver.observe(card));
+  let currentIndex = 0;
+  let currentFilter = "d365"; // Default baseline view filter
+
+  // ==========================================
+  // 1. SCROLL REVEAL MONITOR ENGINE
+  // ==========================================
+  if (section) {
+    const sectionObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("blog-revealed");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    sectionObserver.observe(section);
+  }
+
+  // ==========================================
+  // 2. SLIDER UTILITY GRID CALCULATOR
+  // ==========================================
+  function getVisibleCardsCount() {
+    if (window.innerWidth >= 1024) return 3;
+    if (window.innerWidth >= 768) return 2;
+    return 1;
+  }
+
+  function getActiveCards() {
+    const allCards = Array.from(track.children);
+    return allCards.filter(card => {
+      if (currentFilter === "all") return true;
+      return card.getAttribute("data-category") === currentFilter;
+    });
+  }
+
+  function setupPaginationDots(maxIndex) {
+    dotsContainer.innerHTML = "";
+    if (maxIndex <= 0) return; // Hide dots container completely if cards fit perfectly
+
+    for (let i = 0; i <= maxIndex; i++) {
+      const dot = document.createElement("div");
+      dot.classList.add("blog-dot");
+      if (i === currentIndex) dot.classList.add("active");
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  function updateSlider() {
+    const activeCards = getActiveCards();
+    const allCards = Array.from(track.children);
+
+    // Apply visibility filter states cleanly
+    allCards.forEach(card => {
+      if (currentFilter === "all" || card.getAttribute("data-category") === currentFilter) {
+        card.classList.remove("filtered-out");
+      } else {
+        card.classList.add("filtered-out");
+      }
+    });
+
+    const visibleCount = getVisibleCardsCount();
+    const maxIndex = Math.max(0, activeCards.length - visibleCount);
+
+    if (currentIndex > maxIndex) currentIndex = maxIndex;
+    if (currentIndex < 0) currentIndex = 0;
+
+    // Execute transform movement mathematics
+    if (activeCards.length > 0) {
+      const cardWidth = activeCards[0].getBoundingClientRect().width;
+      const gap = parseFloat(window.getComputedStyle(track).gap) || 0;
+      const amountToMove = (cardWidth + gap) * currentIndex;
+      track.style.transform = `translateX(-${amountToMove}px)`;
     } else {
-        blogCards.forEach(card => card.classList.add("show"));
+      track.style.transform = `translateX(0px)`;
     }
 
-    // ==========================================
-    // 4. DYNAMIC APPLICATION FIELD VISIBILITY ENGINE
-    // ==========================================
-    const academyBlock = document.getElementById('academyConditionalBlock');
-    const cohortSelect = document.getElementById('cohortSelect');
-    const programSelect = document.getElementById('programSelect');
+    // Set accessibility states on control triggers
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex >= maxIndex;
 
-    const trainingBlock = document.getElementById('trainingConditionalBlock');
-    const trainingProgramSelect = document.getElementById('trainingProgramSelect');
-    const trainingDateSelect = document.getElementById('trainingDateSelect');
-    const trainingTimeSelect = document.getElementById('trainingTimeSelect');
+    setupPaginationDots(maxIndex);
+  }
 
-    function toggleConditionalFields(value) {
-        if (academyBlock) {
-            if (value === 'Academy Training') {
-                academyBlock.style.display = 'block';
-                if (cohortSelect) cohortSelect.required = true;
-                if (programSelect) programSelect.required = true;
-            } else {
-                academyBlock.style.display = 'none';
-                if (cohortSelect) { cohortSelect.required = false; cohortSelect.value = ""; }
-                if (programSelect) { programSelect.required = false; programSelect.value = ""; }
-            }
-        }
-
-        if (trainingBlock) {
-            if (value === 'Free Introductory Training') {
-                trainingBlock.style.display = 'block';
-                if (trainingProgramSelect) trainingProgramSelect.required = true;
-                if (trainingDateSelect) trainingDateSelect.required = true;
-                if (trainingTimeSelect) trainingTimeSelect.required = true;
-            } else {
-                trainingBlock.style.display = 'none';
-                if (trainingProgramSelect) { trainingProgramSelect.required = false; trainingProgramSelect.value = ""; }
-                if (trainingDateSelect) { trainingDateSelect.required = false; trainingDateSelect.value = ""; }
-                if (trainingTimeSelect) { trainingTimeSelect.required = false; trainingTimeSelect.value = ""; }
-            }
-        }
+  // ==========================================
+  // 3. ACTION AND NAVIGATION LISTENERS
+  // ==========================================
+  nextBtn.addEventListener("click", function () {
+    const visibleCount = getVisibleCardsCount();
+    const maxIndex = getActiveCards().length - visibleCount;
+    if (currentIndex < maxIndex) {
+      currentIndex++;
+      updateSlider();
     }
+  });
 
-    if (pathwaySelect) {
-        pathwaySelect.addEventListener('change', function() {
-            toggleConditionalFields(this.value);
-        });
+  prevBtn.addEventListener("click", function () {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateSlider();
     }
+  });
+
+  // Filter Bar Controller - Splits filter state from global redirect links
+  filterButtons.forEach(button => {
+    button.addEventListener("click", function (e) {
+      const targetFilter = this.getAttribute("data-filter");
+
+      // Interrupt workflow for "View All Blogs" to cleanly launch external tab
+      if (targetFilter === "all") {
+        e.preventDefault();
+        window.open("/blogs", "_blank"); // Updates window context natively to a secure separate sheet
+        return; 
+      }
+
+      // Default layout filtration logic for structural categories
+      filterButtons.forEach(btn => btn.classList.remove("active"));
+      this.classList.add("active");
+
+      currentFilter = targetFilter;
+      currentIndex = 0; 
+      
+      track.style.transform = `translateX(0px)`;
+      updateSlider();
+    });
+  });
+
+  window.addEventListener("resize", updateSlider);
+  
+  // Fire primary build sequence on execution lifecycle loop
+  updateSlider();
+});
 
     // ==========================================
     // 5. FOOTER FORM OBSERVER DETECTION
