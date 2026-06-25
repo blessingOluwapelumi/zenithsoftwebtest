@@ -385,49 +385,49 @@ document.addEventListener("DOMContentLoaded", function () {
             label: "Financial Management",
             text: "Manage your business financials such as general ledger, accounts receivable and payable, cash flow, budgets, fixed assets, and financial reporting with ease.",
             link: "#",
-            src: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1000&q=80"
+            src: "new_asset/finance-mod.png"
         },
         {
             id: "sales-order",
-            label: "Sales & Order Management",
+            label: "Sales & Marketing",
             text: "Optimize sales flows, log opportunity pipelines, and track open quotes while interfacing directly through native communications environments to expedite processing.",
             link: "#",
-            src: "https://images.unsplash.com/photo-1434626881859-194d67b2b86f?auto=format&fit=crop&w=1000&q=80"
+            src: "new_asset/sales.png"
         },
         {
             id: "purchase-management",
             label: "Purchase Management",
             text: "Keep product procurement requests organized cleanly, manage item receipt sequences, and run structured supplier payment processing models contextually.",
             link: "#",
-            src: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1000&q=80"
+            src: "new_asset/purchase.png"
         },
         {
             id: "warehouse-inventory",
-            label: "Warehouse / Inventory Management",
+            label: "Inventory & Warehouse Management",
             text: "Gain multi-location storage visibility profiles, run inventory picking optimizations, and manage dynamic stock counting updates systematically.",
             link: "#",
-            src: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1000&q=80"
+            src: "new_asset/warehouse.png"
         },
         {
             id: "project-management",
             label: "Project Management",
             text: "Build project schedules, formulate detailed resource budgets, analyze machine usage rates, and track exact workforce time metrics against cost curves.",
             link: "#",
-            src: "https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?auto=format&fit=crop&w=1000&q=80"
+            src: "new_asset/project-module.png"
         },
         {
             id: "manufacturing-management",
             label: "Manufacturing Management",
             text: "Generate product bills of materials (BOM), automate material requirement runs (MRP), coordinate technical work centers, and control scheduling pipelines.",
             link: "#",
-            src: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1000&q=80"
+            src: "new_asset/manufacturing-module.png"
         },
         {
             id: "crm-management",
             label: "Customer Relationship Management",
             text: "Consolidate communication logs, respond to client service requests promptly, and automate secondary product support operations dynamically.",
             link: "#",
-            src: "https://images.unsplash.com/photo-1549923746-c502d488b3ea?auto=format&fit=crop&w=1000&q=80"
+            src: "new_asset/customer-module.png"
         }
     ];
 
