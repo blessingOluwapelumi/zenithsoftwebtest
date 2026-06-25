@@ -708,6 +708,33 @@ body {
 }
 
 
+/* FIXED WHATSAPP BADGE STYLING */
+.whatsapp-badge {
+    position: fixed;
+    bottom: 80px;
+    right: 50px;
+    background-color: #0d8266;
+    width: 55px;
+    height: 55px;
+    border-radius: 40px 5px 40px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    z-index: 9999;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.whatsapp-badge a {
+    color: #ffffff;
+}
+
+.whatsapp-badge:hover {
+    transform: scale(1.08);
+}
+
 
 
 /* business central overview section */
@@ -2873,6 +2900,11 @@ text-decoration: none;
     font-size: 12px;
   }
 
+      .blog-section {
+  padding: 5rem 20px 0 20px;
+
+}
+
 
 }
 
@@ -3377,7 +3409,7 @@ footer.footer-container {
 
 @media (max-width: 768px) {
   .footer-stack-wrapper {
-    margin-top: 100px;
+    margin-top: 50px;
   }
   .connect-form-card {
     margin: 0 20px -60px 20px;
