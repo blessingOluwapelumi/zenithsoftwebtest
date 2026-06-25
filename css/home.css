@@ -823,7 +823,7 @@
 
 .about-workspace-grid {
     display: flex;
-    align-items: stretch;       /* CRITICAL: Forces left and right columns to perfectly match heights */
+    align-items: stretch;       /* Forces left and right columns to perfectly match heights */
     justify-content: space-between;
     max-width: 1400px;
     width: 100%;
@@ -915,7 +915,7 @@
     font-weight: 700;
 }
 
-.about-description1,.about-description {
+.about-description {
     font-size: 15px;
     line-height: 1.8;
     color: var(--primary-color);
@@ -975,32 +975,80 @@
     transform: translateX(0);
 }
 
-@media (max-width:1024px){
-  .sub-badge {
- font-size: 12px;
-  letter-spacing: 0.3px;
-    align-self: center;
-}
-.content-text-card h2 {
-    font-size: 25px;
+/* ==========================================================
+   RESPONSIVE LAYOUT MEDIA BREAKPOINTS
+   ========================================================== *//* ==========================================================
+   RESPONSIVE LAYOUT MEDIA BREAKPOINTS
+   ========================================================== */
+@media (max-width: 1024px) {
+    .about-workspace-grid {
+        flex-direction: column;
+        max-height: none;       /* Remove desktop height restriction */
+        gap: 25px;              /* Tighter spacing between content boxes */
+    }
+
+    .about-container {
+        padding: 0 20px;
+        margin: 5rem 0;
+    }
+
+    /* 1. Hide the second paragraph */
+    .p2-hide {
+        display: none !important;
+    }
+
+    /* 2. Equalize Heights: Balanced layout frames */
+    .about-text-column, 
+    .about-visual-column {
+        width: 100%;
+        height: 350px;          /* Scaled down height across mobile viewports */
+    }
+
+    .content-text-card {
+        padding: 2.5rem 1.5rem; /* Snug padding to fit typography cleanly */
+        height: 100%;           
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .sub-badge {
+        font-size: 12px;
+        letter-spacing: 0.3px;
+        align-self: center;
+        margin-bottom: 12px;
+    }
+
+    .content-text-card h2 {
+        font-size: 22px;        /* Scaled down typography */
+        margin-bottom: 15px;
+    }
+
+    .about-description {
+        font-size: 13.5px;
+        margin-bottom: 15px;
+        line-height: 1.6;
+    }
+
+    .about-cta-btn {
+        align-self: center;
+        margin-top: 5px;
+        padding: 10px 28px;     /* Compact button size */
+    }
+
+    /* 3. Media Box Scale Reductions */
+    .media-box.logo-top-wrapper {
+        height: 80px;           /* Reduced height to preserve space for the portrait below */
+        padding: 10px 20px;
+    }
+
+    /* Target the portrait wrapper box to reduce the image height explicitly */
+    .media-box.portrait-bottom-wrapper {
+        flex: none;             /* Turn off fluid expanding behavior */
+        height: 220px;          /* Manually restrict the portrait view size */
+    }
 }
 
-.about-description{
-  font-size: 14px;
-}
-
-.content-text-card{
-  align-items: center;
-  text-align: center;
-}
-
-.about-cta-btn{
-  align-self: center;
-}
-
-
-
-}
 
 /* ==========================================================================
    WHY CHOOSE US SECTION STYLING
