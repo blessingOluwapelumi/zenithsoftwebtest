@@ -155,15 +155,15 @@ document.addEventListener("DOMContentLoaded", function () {
             title: "Improve financial performance",
             trays: [
                 { id: "bcz-f-1", label: "Financial data control", text: "Manage your finances from A to Z: manage your budget, speed up month-end and year-end closing, improve bank transaction and account balance reconciliation.", type: "video" },
-                { id: "bcz-f-2", label: "Cash flow forecasting", text: "Predict future financial directions reliably. Take advantage of built-in modeling logic frameworks to match incoming revenue cycles directly against costs.", type: "image", src: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1000&q=80" },
-                { id: "bcz-f-3", label: "Improving financial performance", text: "Uncover deep business overhead optimization avenues. Target underperforming product pipelines instantly using automated performance indicators.", type: "image", src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=80" },
-                { id: "bcz-f-4", label: "Expanding operations into global markets", text: "Scale business activities into secondary regional operating locations with multi-currency tracking adjustments and localized compliance frameworks.", type: "image", src: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1000&q=80" }
+                { id: "bcz-f-2", label: "Cash flow forecasting", text: "Predict future financial directions reliably. Take advantage of built-in modeling logic frameworks to match incoming revenue cycles directly against costs.", type: "image", src: "new_asset/cashflow.png" },
+                { id: "bcz-f-3", label: "Improving financial performance", text: "Uncover deep business overhead optimization avenues. Target underperforming product pipelines instantly using automated performance indicators.", type: "image", src: "new_asset/financial-performance.png" },
+                { id: "bcz-f-4", label: "Expanding operations into global markets", text: "Scale business activities into secondary regional operating locations with multi-currency tracking adjustments and localized compliance frameworks.", type: "image", src: "new_asset/currencies1.png" }
             ]
         },
         "supply-chain": {
             title: "Optimize supply chain management",
             trays: [
-                { id: "bcz-s-1", label: "Inventory visibility", text: "Get real-time tracking visibility across your warehouses to optimize stock levels and prevent supply shortages.", type: "image", src: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1000&q=80" },
+                { id: "bcz-s-1", label: "Inventory visibility", text: "Get real-time tracking visibility across your warehouses to optimize stock levels and prevent supply shortages.", type: "image", src: "new_asset/warehouse.png" },
                 { id: "bcz-s-2", label: "Predictive stock replenishment", text: "Use AI analytics forecasting to automatically calculate safety stock volumes and reorder thresholds.", type: "image", src: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1000&q=80" },
                 { id: "bcz-s-3", label: "Supplier relationship mapping", text: "Track vendor performance histories, delivery lag trends, and price sheets cleanly inside one matrix.", type: "image", src: "https://images.unsplash.com/photo-1601597111158-2fceff292cdc?auto=format&fit=crop&w=1000&q=80" },
                 { id: "bcz-s-4", label: "Order fulfillment streams", text: "Speed up picking, packing, and dispatch logistical routing pipelines with connected digital workflows.", type: "image", src: "https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?auto=format&fit=crop&w=1000&q=80" }
