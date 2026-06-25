@@ -493,6 +493,7 @@
     }
 }
 
+
 /* ==========================================================================
    HERO SECTION STYLING
    ========================================================================== */
@@ -813,6 +814,10 @@
    ABOUT US SECTION (EQUAL WIDTH & HEIGHT STRUCTURE)
    ========================================================================== */
 
+/* ABOUT US */
+/* ==========================================================================
+   ABOUT US LAYOUT GRID & ANIMATION STRUCTURE
+   ========================================================================== */
 .about-container {
     margin: 10rem 0;
     background-color: #f8fafc;
@@ -1049,7 +1054,7 @@
     }
 }
 
-
+   
 /* ==========================================================================
    WHY CHOOSE US SECTION STYLING
    ========================================================================== */
@@ -1976,22 +1981,23 @@
 
 /* INDUSTRIES STYLING */
 
-/* Industries */
-
 /* ==========================================================
    SCROLL REVEAL (WHOLE SECTION INITIAL ENTRY ANIMATION)
    ========================================================== */
+
 .scroll-reveal-section {
     opacity: 0;
-    transform: translateY(50px);
+    /* Slides up 60px and subtly expands for a premium motion frame appearance */
+    transform: translateY(60px) scale(0.99);
     will-change: transform, opacity;
-    transition: transform 1.2s cubic-bezier(0.215, 0.610, 0.355, 1),
-                opacity 1.2s cubic-bezier(0.215, 0.610, 0.355, 1);
+    backface-visibility: hidden;
+    transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .scroll-reveal-section.section-visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
 }
 
 /* ==========================================================
@@ -2623,9 +2629,6 @@ background-color: #ebf4fb9a;
 
 
 
-/* blog section styling */
-
-
 /* BLOG */
 /* ==========================================================================
    BLOGS AND UPDATES SECTION SLIDER & REVEAL ENGINE
@@ -2923,6 +2926,7 @@ text-decoration: none;
 
 
 }
+
 
 /* form and footer styling */
 
