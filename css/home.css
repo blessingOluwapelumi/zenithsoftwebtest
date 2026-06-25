@@ -2634,7 +2634,7 @@ background-color: #ebf4fb9a;
    BLOGS AND UPDATES SECTION SLIDER & REVEAL ENGINE
    ========================================================================== */
 .blog-section {
-  padding: 10rem 20px 0 20px;
+  padding: 4rem 20px 0 20px;
   /* background-color: var(--main-bg-color, #ffffff); */
   text-align: center;
   max-width: 1400px;
@@ -2655,7 +2655,7 @@ background-color: #ebf4fb9a;
 }
 
 .blog-header h4 {
-  color: var(--bc-titile);
+  color: var(--btn-color);
   font-size: 14px;
   margin-bottom: 15px;
   font-weight: 600;
@@ -2894,6 +2894,7 @@ text-decoration: none;
     flex: 0 0 calc((100% - 60px) / 3); /* Locks exactly 3 proportional cards visible on desktop screens */
   }
 
+
  
 }
 
@@ -2924,11 +2925,16 @@ text-decoration: none;
     font-size: 12px;
   }
 
+  .blog-section {
+  padding: 2rem 20px 0 20px;}
 
 }
 
 
-/* form and footer styling */
+
+
+
+/* FOOTER*/
 
 /* ==========================================================
    1. FORM AND FOOTER OVERLAP STACK STRUCTURAL WRAPPER
@@ -3466,7 +3472,7 @@ footer.footer-container {
 
 @media (max-width: 768px) {
   .footer-stack-wrapper {
-    margin-top: 100px;
+    margin-top: 50px;
   }
   .connect-form-card {
     margin: 0 20px -60px 20px;
