@@ -86,34 +86,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // --- ABOUT US SECTION SCROLL REVEALS ---
-const aboutVisualCol = document.querySelector('.about-visual-column');
-const aboutTextCol = document.querySelector('.about-text-column');
+// ==========================================
 
-function animateAboutSection() {
-    // Elements trigger gracefully when 15% inside the view area boundaries
-    const triggerPoint = window.innerHeight * 0.85;
+(function() {
+    const aboutVisualCol = document.querySelector('.about-visual-column');
+    const aboutTextCol = document.querySelector('.about-text-column');
 
-    // Animate Left Column (Logo + Portrait Grid)
-    if (aboutVisualCol && !aboutVisualCol.classList.contains('slide-in-left')) {
-        if (aboutVisualCol.getBoundingClientRect().top < triggerPoint) {
-            aboutVisualCol.classList.add('slide-in-left');
+    function animateAboutSection() {
+        // Elements trigger gracefully when 15% inside the view area boundaries
+        const triggerPoint = window.innerHeight * 0.85;
+
+        // Animate Left Column (Logo + Portrait Grid)
+        if (aboutVisualCol && !aboutVisualCol.classList.contains('slide-in-left')) {
+            if (aboutVisualCol.getBoundingClientRect().top < triggerPoint) {
+                aboutVisualCol.classList.add('slide-in-left');
+            }
+        }
+
+        // Animate Right Column (Text Card)
+        if (aboutTextCol && !aboutTextCol.classList.contains('slide-in-right')) {
+            if (aboutTextCol.getBoundingClientRect().top < triggerPoint) {
+                aboutTextCol.classList.add('slide-in-right');
+            }
         }
     }
 
-    // Animate Right Column (Text Card)
-    if (aboutTextCol && !aboutTextCol.classList.contains('slide-in-right')) {
-        if (aboutTextCol.getBoundingClientRect().top < triggerPoint) {
-            aboutTextCol.classList.add('slide-in-right');
-        }
-    }
-}
+    // Event Listeners for smooth execution handling
+    window.addEventListener('scroll', animateAboutSection);
 
-// Event Listeners for smooth execution handling
-window.addEventListener('scroll', animateAboutSection);
-
-document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(animateAboutSection, 150); // Safe layout cycle execution delay
-});
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(animateAboutSection, 150); // Safe layout cycle execution delay
+    });
+})();
 
 
 // ==========================================
@@ -497,18 +501,20 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+
 // INDUSTRIES
 document.addEventListener("DOMContentLoaded", () => {
     
     // ==========================================================
     // 1. SCROLL REVEAL INTERSECTION OBSERVER
     // ==========================================================
-    const revealSection = document.querySelector('.scroll-reveal-section');
+    // Using querySelectorAll keeps this robust if you use reveal classes elsewhere
+    const revealSections = document.querySelectorAll('.scroll-reveal-section');
 
     if ('IntersectionObserver' in window) {
         const sectionObserverOptions = {
             root: null,
-            threshold: 0.1,
+            threshold: 0.1,    // Triggers when 10% of the container is visible
             rootMargin: "0px"
         };
 
@@ -521,11 +527,14 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }, sectionObserverOptions);
 
-        if (revealSection) {
-            sectionObserver.observe(revealSection);
-        }
+        revealSections.forEach(section => {
+            sectionObserver.observe(section);
+        });
     } else {
-        if (revealSection) revealSection.classList.add('section-visible');
+        // Fallback for older browsers
+        revealSections.forEach(section => {
+            section.classList.add('section-visible');
+        });
     }
 
 
@@ -570,7 +579,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// testimonials
+
+// TESTIMONIALS
 document.addEventListener("DOMContentLoaded", () => {
   
   // ==========================================================
@@ -892,6 +902,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Fire primary build sequence on execution lifecycle loop
   updateSlider();
 });
+
 
 
 
