@@ -30,9 +30,7 @@ body {
 }
 
 
-/* ==========================================================
-   SECTION 1: TOP UTILITY BAR STYLING
-   ========================================================== */
+/* 1. TOP UTILITY BAR STYLING */
 .top-bar {
     background-color: #333333;
     color: #cccccc;
@@ -61,9 +59,6 @@ body {
     color: #ffffff;
 }
 
-
-
-
 /* ==========================================================================
    2. MAIN HEADER NAVIGATION WITH IMAGE LOGO FIXES
    ========================================================================== */
@@ -91,8 +86,6 @@ body {
     justify-content: space-between;
     padding: 0 24px;
     height: 70px;
-    /* Added to give mega-menu dropdown context reference */
-    position: relative; 
 }
 
 .logo {
@@ -130,7 +123,6 @@ body {
     align-items: center;
     height: 70px;
     transition: color 0.2s ease;
-    scroll-behavior: smooth;
 }
 
 .nav-item:hover, .dropdown-trigger:hover {
@@ -172,17 +164,11 @@ body {
 /* ==========================================================================
    DROPDOWN & MEGA MENU STRUCTURES
    ========================================================================== */
-@media screen and (min-width: 1025px) {
-    /* Stop using the list-item as the coordinate relative wrapper on desktop */
-    .nav-item-dropdown { position: static; }
-}
+.nav-item-dropdown { position: relative; }
 
 .dropdown-pane {
     position: absolute;
-    /* Top calculation changes to 100% of the navbar parent framework height */
-    top: 100%; 
-    left: 0;
-    width: 100%;
+    top: 110px; 
     background-color: #f1f5f9;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     opacity: 0;
@@ -199,10 +185,10 @@ body {
 }
 
 .mega-menu {
-    position: absolute; /* Swapped from fixed to keep layout bounding container relative */
+    position: fixed; 
     left: 50%;
     transform: translateX(-50%) translateY(2px);
-    width: 95vw;
+    width: 90vw;
     max-width: 1300px;
     border-radius: 0 0 16px 16px;
     padding: 40px;
@@ -294,20 +280,12 @@ body {
 /* ==========================================================
    ACADEMY & ABOUT SMALL DROPDOWNS
    ========================================================== */
-.relative-container { 
-    /* Maintains isolation target strictly for smaller menus */
-    position: relative; 
-}
-
-/* Specific adjustment context rule for smaller standalone drop panels */
-.nav-item-dropdown.relative-container {
-    position: relative;
-}
+.relative-container { position: relative; }
 
 .small-menu { 
     position: absolute;
     right: 0; 
-    top: 100%; /* Sits cleanly underneath nav line height limits */
+    top: 70px;
     width: 220px; 
     border-radius: 12px; 
     padding: 16px; 
@@ -331,7 +309,6 @@ body {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        position: static;
     }
 
     .nav-actions {
@@ -390,12 +367,10 @@ body {
         justify-content: space-between;
         font-size: 16px;
         box-sizing: border-box;
-        scroll-behavior: smooth;
     }
 
     .nav-item-dropdown {
-        width: 100% !important;
-        position: relative !important;
+        width: 100%;
     }
 
     .dropdown-pane, 
@@ -448,14 +423,15 @@ body {
         border-bottom: 1px dashed #e2e8f0;
     }
 
+    /* --- MOBILE ICON SIZING REDUCTIONS --- */
     .column-icon-img {
-        width: 18px; 
-        height: 18px; 
+        width: 18px; /* Reduced from 24px */
+        height: 18px; /* Reduced from 24px */
     }
 
     .column-title span i {
-        font-size: 14px; 
-        width: 16px;  
+        font-size: 14px; /* Reduced from 16px */
+        width: 16px;  /* Reduced from 20px */
     }
 
     .mobile-column-arrow {
@@ -496,6 +472,8 @@ body {
         box-sizing: border-box;
     }
 }
+
+
 
 /* ==========================================================================
    HERO SECTION STYLING
@@ -1030,32 +1008,16 @@ body {
 
 
 
-/* blog section styling */
-
-
 /* BLOG */
 /* ==========================================================================
    BLOGS AND UPDATES SECTION SLIDER & REVEAL ENGINE
    ========================================================================== */
 .blog-section {
   padding: 10rem 20px 0 20px;
-  /* background-color: var(--main-bg-color, #ffffff); */
   text-align: center;
   max-width: 1400px;
   margin: 0 auto;
   overflow: hidden;
-
-  /* --- Scroll Reveal Setup --- */
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 1s cubic-bezier(0.215, 0.61, 0.355, 1), transform 1s cubic-bezier(0.215, 0.61, 0.355, 1);
-  will-change: transform, opacity;
-}
-
-/* Activated by IntersectionObserver inside JavaScript */
-.blog-section.blog-revealed {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .blog-header h4 {
@@ -1108,7 +1070,7 @@ body {
 }
 
 .filter-pill.active {
-  background-color: var(--btn-color);
+  background-color: var(--btn-color, #d9383a);
   color: #ffffff;
 }
 
@@ -1122,13 +1084,13 @@ body {
   cursor: pointer;
   background-color: #f1f5f9;
   color: #475569;
-  text-decoration: none; /* Strip out standard anchor underline markup */
+  text-decoration: none; 
   transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
   line-height: 1.2;
 }
 
 .filter-pill-link:hover {
-  background-color: var(--btn-color);
+  background-color: var(--btn-color, #d9383a);
   color: #ffffff;
 }
 
@@ -1152,22 +1114,25 @@ body {
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
+  user-select: none;
 }
 
-.blog-nav-btn:hover {
+.blog-nav-btn:hover:not(:disabled) {
   border-color: #0f172a;
   background-color: #f8fafc;
 }
 
 .blog-nav-btn:disabled {
-  opacity: 0.3;
+  opacity: 0.25;
   cursor: not-allowed;
+  border-color: #e2e8f0;
 }
 
 /* Navigation System Pagination Dots */
 .blog-dots {
   display: flex;
-  gap: 6px;
+  align-items: center;
+  gap: 8px;
 }
 
 .blog-dot {
@@ -1175,11 +1140,13 @@ body {
   height: 8px;
   border-radius: 50%;
   background-color: #cbd5e1;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .blog-dot.active {
-  background-color: var(--btn-color);
+  background-color: var(--btn-color, #d9383a);
+  transform: scale(1.2);
 }
 
 /* --- Slider Core Structural Engine Viewport --- */
@@ -1200,18 +1167,27 @@ body {
 
 /* --- Dynamic Card Layout Rules --- */
 .blog-card {
-  flex: 0 0 100%; /* Shows 1 card per frame layout natively on mobile screen targets */
+  flex: 0 0 100%; 
   background-color: var(--main-bg-color, #ffffff);
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
   text-align: left;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.4s ease;
   cursor: pointer;
   display: block;
+
+  /* --- Smooth Entrance Setup via JS intersection observer --- */
+  opacity: 0;
+  transform: translateY(30px);
+  transition: transform 0.5s ease-out, box-shadow 0.3s ease, opacity 0.5s ease-out;
+  will-change: transform, opacity;
 }
 
-/* Stripped out gracefully by slider logic depending on the active category */
+.blog-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .blog-card.filtered-out {
   display: none !important;
 }
@@ -1233,7 +1209,7 @@ body {
 .blog-image img {
   width: 100%;
   height: 100%;
-  object-fit:contain;
+  object-fit: cover; /* Changed from contain to cleanly fill the standard framework layout uniform card shapes */
 }
 
 .blog-image.placeholder {
@@ -1261,11 +1237,11 @@ body {
   margin: 10px 0 20px;
   color: #1e293b;
   line-height: 1.5;
-  min-height: 66px; /* Balance content fields cleanly across neighboring cards */
+  min-height: 66px; 
 }
 
-.blog-content a{
-text-decoration: none;
+.blog-content a {
+  text-decoration: none;
 }
 
 .read-arrow {
@@ -1279,8 +1255,8 @@ text-decoration: none;
 
 .read-arrow:hover {
   transform: translateX(6px);
-  color: var(--btn-color);
-    font-size: 1.1rem;
+  color: var(--btn-color, #d9383a);
+  font-size: 1.1rem;
 }
 
 /* ==========================================================================
@@ -1288,17 +1264,16 @@ text-decoration: none;
    ========================================================================== */
 @media (min-width: 768px) {
   .blog-card {
-    flex: 0 0 calc((100% - 30px) / 2); /* Renders 2 cards smoothly across tablet viewports */
+    /* Exact formula to match track gaps for 2 column slider spacing metrics */
+    flex: 0 0 calc((100% - 30px) / 2); 
   }
-  
 }
 
 @media (min-width: 1024px) {
   .blog-card {
-    flex: 0 0 calc((100% - 60px) / 3); /* Locks exactly 3 proportional cards visible on desktop screens */
+    /* Exact formula to match track gaps for 3 column slider spacing metrics */
+    flex: 0 0 calc((100% - 60px) / 3); 
   }
-
- 
 }
 
 @media (max-width: 640px) {
@@ -1319,16 +1294,12 @@ text-decoration: none;
     width: 100%;
     justify-content: space-between;
   }
-
-  .blog-header h1{
-    font-size:20px;
+  .blog-header h1 {
+    font-size: 20px;
   }
-
-   .blog-header h4{
+  .blog-header h4 {
     font-size: 12px;
   }
-
-
 }
 
 
